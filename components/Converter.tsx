@@ -7,6 +7,34 @@ import SwapIcon from '../assets/images/swap.png';
 import styles from '../styles/Converter.module.css'
 
 export default function Conveter () {
+  const numberRule = new RegExp(/^\d*\.?\d{0,2}$/)
+  const conversionRate = 3;
+  
+  const [nep, setNep] = React.useState<string>('');
+  const [busd, setBusd] = React.useState<string>('');
+
+  const handleNepChange = (e: any) => {
+    if (e.target.value && !numberRule.test(e.target.value)) return
+    setNep(e.target.value)
+    if (!e.target.value) {
+      setBusd('');
+      return;
+    }
+    const totalBusd = Number(e.target.value) * conversionRate;
+    setBusd(totalBusd.toFixed(2));
+  }
+
+  const handleBusdChange = (e: any) => {
+    if (e.target.value && !numberRule.test(e.target.value)) return
+    setBusd(e.target.value)
+    if (!e.target.value) {
+      setNep('')
+      return
+    }
+    const totalNep = Number(e.target.value) / conversionRate;
+    setNep(totalNep.toFixed(2))
+  }
+
   return (
     <div className={styles.converterContainer}>
       <div className={styles.neptuneImageContainer}>
@@ -21,7 +49,9 @@ export default function Conveter () {
           <TextField 
             placeholder='0.00' 
             fullWidth
-            type="number"
+            value={nep}
+            onChange={handleNepChange}
+            type="text"
             InputProps={{classes: {input: styles.input}, inputMode: 'numeric' }}
           />
         </div>
@@ -33,7 +63,9 @@ export default function Conveter () {
           <TextField 
             placeholder='0.00' 
             fullWidth
-            type="number"
+            value={busd}
+            onChange={handleBusdChange}
+            type="text"
             InputProps={{classes: {input: styles.input}, inputMode: 'numeric' }}
           />
         </div>
