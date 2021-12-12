@@ -1,0 +1,53 @@
+.dialogTitle {
+	display: flex;
+	justify-content: space-between;
+}
+
+.notConnected {
+	color: red;
+}
+
+.bottomButtonContainer {
+	width: 50%;
+	padding: 4px;
+}
+
+.bottomButton {
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+	text-transform: none !important;
+}
+
+.cancelButton {
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+	text-transform: none !important;
+	background-color: #E4E7ED;
+	color: black;
+}
+
+.disconnectButton {
+	width: 100%;
+	text-align: center;
+	font-weight: 500;
+	text-transform: none !important;
+	margin: 4px;
+}
+
+.tableRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #D3D3D3;
+	margin: 4px 8px;
+	padding: 6px 12px;
+}
+
+.walletDetails {
+	display: flex;
+	justify-content: center;
+	color: #afafaf;
+	margin-top: 12px;
+}

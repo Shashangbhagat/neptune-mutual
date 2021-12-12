@@ -6,7 +6,11 @@ import NeptuneImage from '../assets/images/neptune-mutual.png';
 import SwapIcon from '../assets/images/swap.png';
 import styles from '../styles/Converter.module.css'
 
-export default function Conveter () {
+interface IProps {
+  openWalletDetails: () => void,
+}
+
+export default function Conveter (props: IProps) {
   const numberRule = new RegExp(/^\d*\.?\d{0,2}$/)
   const conversionRate = 3;
   
@@ -70,7 +74,11 @@ export default function Conveter () {
           />
         </div>
         <div className={styles.buttonContainer}>
-          <Button variant="text" className={styles.button}>
+          <Button
+            variant="text"
+            className={styles.button}
+            onClick={props.openWalletDetails}
+          >
             Check Wallet Details
           </Button>
         </div>

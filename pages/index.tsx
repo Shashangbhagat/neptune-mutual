@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import type { NextPage } from 'next'
+import React from 'react';
 import styles from '../styles/Home.module.css'
 import Conveter from '../components/Converter'
+import WalletDetailsModal from '../components/WalletDetailsModal';
 
 const Home: NextPage = () =>  {
+  const [showDetails, setWalletDetails] = React.useState<boolean>(false);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,8 +15,22 @@ const Home: NextPage = () =>  {
       </Head>
 
       <main className={styles.main}>
-        <Conveter />
+        <Conveter 
+          openWalletDetails={
+            () => {
+              setWalletDetails(true)
+            }
+          } 
+        />
       </main>
+      <WalletDetailsModal 
+        open={showDetails}
+        handleClose={
+          () => {
+            setWalletDetails(false);
+          }
+        }
+      />
     </div>
   )
 }
